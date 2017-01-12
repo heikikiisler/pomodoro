@@ -1,0 +1,45 @@
+
+@font-face {
+	src: url('../resources/digital-7.mono.ttf');
+}
+
+.button {
+	-fx-background-color: rgba(0, 0, 0, 0.9);
+	-fx-border-color: black;
+	-fx-border-width: 2px;
+	-fx-effect: dropshadow(gaussian, #01fe0e , 5, 0.5, 0, 0);
+	-fx-text-fill: #01fe0e;
+	-fx-font-size: 12px;
+	-fx-font-family: "Digital-7 Mono";
+	-fx-padding: 2px;
+}
+
+.button Text {
+	-fx-effect: dropshadow(gaussian, #01fe0e , 5, 0.5, 0, 0);
+}
+
+.root {
+	-fx-background-color: rgba(0, 0, 0, 0.9);
+	-fx-background-image: url("../resources/carbon.jpg");
+	-fx-border-color: black;
+	-fx-border-width: 3px;
+}
+
+#displayTime {
+	-fx-font-family: "Digital-7 Mono";
+	-fx-font-size: 53px;
+	-fx-text-fill: rgba(13, 74, 0, 1); /* #0D4A00 */
+	-fx-effect: dropshadow(gaussian, #01fe0e , 5, 0.5, 0, 0);
+}
+
+#textField {
+	-fx-font-size: 35px;
+	-fx-text-fill: rgb(31, 207, 0); /* #0D4A00 */
+	-fx-font-family: "Digital-7 Mono";
+	-fx-effect: dropshadow(gaussian, #01fe0e , 5, 0.5, 0, 0);
+	-fx-background-color: rgba(0, 0, 0, 0.9);
+
+}
+
+
+

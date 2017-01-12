@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="borderPane" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <left>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="startButton" alignment="CENTER" mnemonicParsing="false" onAction="#startButtonClicked" text="Start" textAlignment="CENTER">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="4.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="breakButton" alignment="CENTER" mnemonicParsing="false" onAction="#breakButtonClicked" text="Break" textAlignment="CENTER">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="4.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+   <right>
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="closeButton" alignment="CENTER" mnemonicParsing="false" onAction="#close" text="X" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="minimizeButton" alignment="CENTER" mnemonicParsing="false" onAction="#minimize" text="_" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </VBox>
+   </right>
+   <center>
+      <StackPane BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="displayTime" alignment="CENTER" onMouseClicked="#displayTimeClicked" text="00:00" textAlignment="CENTER">
+               <font>
+                  <Font size="76.0" />
+               </font>
+            </Label>
+            <TextField id="textField" fx:id="textField" alignment="CENTER" onAction="#submitMinutes" promptText="WW:BB" visible="false" />
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>
