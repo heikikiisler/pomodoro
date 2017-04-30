@@ -141,7 +141,7 @@ public class Controller {
             try {
                 FileWriter fileWriter = new FileWriter(new File(MyTimer.TIME_DATA_FILE_PATH));
                 BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-                bufferedWriter.write(input);
+                bufferedWriter.write(input.replaceAll("\\D+", ":"));
                 bufferedWriter.close();
                 fileWriter.close();
             } catch (IOException e) {

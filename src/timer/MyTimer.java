@@ -5,13 +5,15 @@ import sample.Controller;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class MyTimer {
 
     public static final String TIME_DATA_FILE_PATH = "timedata.txt";
-    public static int initialWorkTimeInMinutes = 30;
-    public static int initialBreakTimeInMinutes = 30;
+    public static int initialWorkTimeInMinutes = 25;
+    public static int initialBreakTimeInMinutes = 5;
     private Controller controller;
     private int timeInSeconds;
     private String timeText;
@@ -67,8 +69,11 @@ public class MyTimer {
         try {
             File timeFile = new File(TIME_DATA_FILE_PATH);
             String times = Files.readAllLines(Paths.get(timeFile.getPath())).get(0);
-            initialWorkTimeInMinutes = Integer.parseInt(times.substring(0, 2));
-            initialBreakTimeInMinutes = Integer.parseInt(times.substring(3, 5));
+            String[] timeList = times.split(":");
+            initialWorkTimeInMinutes = Integer.parseInt(timeList[0]);
+            initialBreakTimeInMinutes = Integer.parseInt(timeList[1]);
+        } catch (NoSuchFileException e) {
+            System.out.println("No timedata file found, creating a new one");
         } catch (IOException e) {
             e.printStackTrace();
         }
