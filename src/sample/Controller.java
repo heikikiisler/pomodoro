@@ -36,7 +36,8 @@ public class Controller {
     private Timeline timeline = new Timeline(
             new KeyFrame(
                 Duration.ZERO,
-                ActionEvent -> countDownOneSecond()),
+                ActionEvent -> countDownOneSecond()
+            ),
             new KeyFrame(
                     Duration.seconds(1)
             )
@@ -67,15 +68,18 @@ public class Controller {
         if (breakMode) {
             myTimer.resetWorkMode();
             breakButton.setText("Break");
-            displayTime.setStyle("\t-fx-effect: dropshadow(gaussian, #01fe0e , 5, 0.5, 0, 0);" +
-                    "-fx-text-fill: #0D4A00;");
+            displayTime.setStyle(
+                    "\t-fx-effect: dropshadow(gaussian, #01fe0e , 5, 0.5, 0, 0);" +
+                    "-fx-text-fill: #0D4A00;"
+            );
             breakMode = false;
-
         } else {
             myTimer.resetBreakMode();
             breakButton.setText("Work");
-            displayTime.setStyle("-fx-effect: dropshadow(gaussian, #fffa00 , 5, 0.5, 0, 0);" +
-                    "-fx-text-fill: #cecb18;");
+            displayTime.setStyle(
+                    "-fx-effect: dropshadow(gaussian, #fffa00 , 5, 0.5, 0, 0);" +
+                    "-fx-text-fill: #cecb18;"
+            );
             breakMode = true;
         }
     }
@@ -112,8 +116,10 @@ public class Controller {
     }
 
     public void zeroTime() {
-        displayTime.setStyle("-fx-effect: dropshadow(gaussian, #ff0000 , 5, 0.5, 0, 0);" +
-                "-fx-text-fill: #000000;");
+        displayTime.setStyle(
+                "-fx-effect: dropshadow(gaussian, #ff0000 , 5, 0.5, 0, 0);" +
+                "-fx-text-fill: #000000;"
+        );
         pauseTimer();
     }
 

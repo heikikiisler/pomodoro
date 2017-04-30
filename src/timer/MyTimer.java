@@ -2,13 +2,14 @@ package timer;
 
 import sample.Controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class MyTimer {
 
-    public static final String TIME_DATA_FILE_PATH = "src/resources/timedata.txt";
+    public static final String TIME_DATA_FILE_PATH = "timedata.txt";
     public static int initialWorkTimeInMinutes = 30;
     public static int initialBreakTimeInMinutes = 30;
     private Controller controller;
@@ -64,7 +65,8 @@ public class MyTimer {
 
     public void setInitialTimesFromFile() {
         try {
-            String times = Files.readAllLines(Paths.get(TIME_DATA_FILE_PATH)).get(0);
+            File timeFile = new File(TIME_DATA_FILE_PATH);
+            String times = Files.readAllLines(Paths.get(timeFile.getPath())).get(0);
             initialWorkTimeInMinutes = Integer.parseInt(times.substring(0, 2));
             initialBreakTimeInMinutes = Integer.parseInt(times.substring(3, 5));
         } catch (IOException e) {
