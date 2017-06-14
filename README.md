@@ -6,11 +6,11 @@ Simple timer for using the Pomodoro technique with configurable work and break t
 
 The executable JAR is found in the *out/artifacts/Pomodoro_jar* directory.
 
-To set your custom times, just double click on the timer and enter the times in minutes in WORK:BREAK format (m:m).
+To set your custom times, just double click on the timer and enter the times in minutes in WORK:BREAK format (25:5 for standard Pomodoro).
 
 ### Ideas for features and changes
 
-* Option to change running time without changing defaults
+* Option to change running time without changing defaults (Right click on the time)
 * Different color for when break timer finishes (orange instead of red)
 * Remember default position
 * Change icon
