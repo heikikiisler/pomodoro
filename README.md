@@ -15,9 +15,11 @@ To set your custom times, just double click on the timer and enter the times in 
 * Remember default position
 * Change icon
 * Make it available for pinning to taskbar (Windows 10)
+* Let timer run past 00:00
+* Optionally compensate for overtime with the appropriate ratio
 
 ### Bugs
 
 * When time runs out, time defaults are changed and timer is started, the timer numbers will stay red.
 * Windows 10: interacting with the taskbar will hide the timer if they're on top of each other.
-* Empirical evidence shows timer generally using 80-150Mb of RAM which should be lower.
+* Empirical evidence shows timer generally using 80-150Mb of RAM which could probably be lower.
