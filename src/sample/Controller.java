@@ -3,16 +3,14 @@ package sample;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import timer.MyTimer;
+import timer.Timer;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -32,7 +30,7 @@ public class Controller {
 
     private boolean breakMode = false;
     private boolean isRunning = false;
-    private MyTimer myTimer = new MyTimer(this);
+    private Timer myTimer = new Timer(this);
     private Timeline timeline = new Timeline(
             new KeyFrame(
                 Duration.ZERO,
@@ -139,7 +137,7 @@ public class Controller {
         if (input.matches("[0-9]+.[0-9]+")) {
             source.setVisible(false);
             try {
-                FileWriter fileWriter = new FileWriter(new File(MyTimer.TIME_DATA_FILE_PATH));
+                FileWriter fileWriter = new FileWriter(new File(Timer.TIME_DATA_FILE_PATH));
                 BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
                 bufferedWriter.write(input.replaceAll("\\D+", ":"));
                 bufferedWriter.close();

@@ -7,18 +7,17 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 
-public class MyTimer {
+public class Timer {
 
     public static final String TIME_DATA_FILE_PATH = "timedata.txt";
-    public static int initialWorkTimeInMinutes = 25;
-    public static int initialBreakTimeInMinutes = 5;
+    private static int initialWorkTimeInMinutes = 25;
+    private static int initialBreakTimeInMinutes = 5;
     private Controller controller;
     private int timeInSeconds;
     private String timeText;
 
-    public MyTimer(Controller controller) {
+    public Timer(Controller controller) {
         this.controller = controller;
         setInitialTimesFromFile();
     }

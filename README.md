@@ -18,6 +18,11 @@ To set your custom times, just double click on the timer and enter the times in 
 * Let timer run past 00:00
 * Optionally compensate for overtime with the appropriate ratio
 
+### Code fix ideas
+
+* Config file with times, colors and additional preferences
+* Removing circular dependency from Timer and Controller classes
+
 ### Bugs
 
 * When time runs out, time defaults are changed and timer is started, the timer numbers will stay red.
