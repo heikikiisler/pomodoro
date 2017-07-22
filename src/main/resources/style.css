@@ -1,6 +1,6 @@
 
 @font-face {
-	src: url('../resources/digital-7.mono.ttf');
+	src: url('digital-7.mono.ttf');
 }
 
 .button {
@@ -20,7 +20,7 @@
 
 .root {
 	-fx-background-color: rgba(0, 0, 0, 0.9);
-	-fx-background-image: url("../resources/carbon.jpg");
+	-fx-background-image: url("carbon.jpg");
 	-fx-border-color: black;
 	-fx-border-width: 3px;
 }

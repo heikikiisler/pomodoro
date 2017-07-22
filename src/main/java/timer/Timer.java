@@ -1,18 +1,12 @@
 package timer;
 
+import data.Config;
 import sample.Controller;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Paths;
 
 public class Timer {
 
-    public static final String TIME_DATA_FILE_PATH = "timedata.txt";
-    private static int initialWorkTimeInMinutes = 25;
-    private static int initialBreakTimeInMinutes = 5;
+    private static int initialWorkTimeInMinutes;
+    private static int initialBreakTimeInMinutes;
     private Controller controller;
     private int timeInSeconds;
     private String timeText;
@@ -20,10 +14,6 @@ public class Timer {
     public Timer(Controller controller) {
         this.controller = controller;
         setInitialTimesFromFile();
-    }
-
-    public void setDisplayTime() {
-        controller.setDisplayTime(timeText);
     }
 
     private void generateTimeText() {
@@ -44,7 +34,7 @@ public class Timer {
 
     public void refresh() {
         generateTimeText();
-        setDisplayTime();
+        controller.setDisplayTime(timeText);
     }
 
     public void resetWorkMode() {
@@ -65,17 +55,8 @@ public class Timer {
     }
 
     public void setInitialTimesFromFile() {
-        try {
-            File timeFile = new File(TIME_DATA_FILE_PATH);
-            String times = Files.readAllLines(Paths.get(timeFile.getPath())).get(0);
-            String[] timeList = times.split(":");
-            initialWorkTimeInMinutes = Integer.parseInt(timeList[0]);
-            initialBreakTimeInMinutes = Integer.parseInt(timeList[1]);
-        } catch (NoSuchFileException e) {
-            System.out.println("No timedata file found, creating a new one");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        initialWorkTimeInMinutes = Config.getPropertyInt("workTime");
+        initialBreakTimeInMinutes = Config.getPropertyInt("breakTime");
     }
 
     public int getTimeInSeconds() {
