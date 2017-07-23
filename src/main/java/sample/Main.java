@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -31,6 +32,8 @@ public class Main extends Application {
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
 
+        primaryStage.getIcons().add(new Image(String.valueOf(Resources.getResource("icon.png"))));
+
     }
 
     private void setDefaultLocation(Stage primaryStage) {
@@ -49,4 +52,5 @@ public class Main extends Application {
             primaryStage.setY(Config.getPropertyDouble(Config.Y_DEFAULT));
         }
     }
+
 }
