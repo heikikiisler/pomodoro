@@ -1,7 +1,9 @@
 # pomodoro
 
 Simple timer for using the Pomodoro technique with configurable work and break times.
+
 ![Work mode](src/main/resources/screenshot1.png?raw=true "Work mode")
+
 ![Break mode paused](src/main/resources/screenshot2.png?raw=true "Break mode paused")
 
 ### How to use
