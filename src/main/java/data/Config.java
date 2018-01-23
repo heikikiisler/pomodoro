@@ -1,14 +1,19 @@
 package data;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Properties;
 
 public class Config {
 
-    private static Properties properties = loadAndSetProperties();
+    private static final Properties PROPERTIES = loadAndSetProperties();
     private static final String CONFIG_FILEPATH = "config.properties";
+    private static final String CONFIG_SAMPLE_FILEPATH = "config.properties.sample";
 
     public static final String WORK_TIME = "workTime";
     public static final String BREAK_TIME = "breakTime";
@@ -21,6 +26,14 @@ public class Config {
     private static Properties loadAndSetProperties() {
         Properties properties = new Properties();
         try {
+            if (!new File(CONFIG_FILEPATH).isFile()) {
+                System.out.println("here");
+                Files.copy(
+                        new File(CONFIG_SAMPLE_FILEPATH).toPath(),
+                        new File(CONFIG_FILEPATH).toPath(),
+                        StandardCopyOption.REPLACE_EXISTING
+                );
+            }
             properties.load(new FileInputStream(CONFIG_FILEPATH));
         } catch (IOException e) {
             e.printStackTrace();
@@ -29,21 +42,21 @@ public class Config {
     }
 
     public static String getPropertyString(String key) {
-        return properties.getProperty(key);
+        return PROPERTIES.getProperty(key);
     }
 
     public static int getPropertyInt(String key) {
-        return Integer.parseInt(properties.getProperty(key));
+        return Integer.parseInt(PROPERTIES.getProperty(key));
     }
 
     public static double getPropertyDouble(String key) {
-        return Double.parseDouble(properties.getProperty(key));
+        return Double.parseDouble(PROPERTIES.getProperty(key));
     }
 
     public static void setProperty(String key, String value) {
-        properties.setProperty(key, value);
+        PROPERTIES.setProperty(key, value);
         try {
-            properties.store(new FileOutputStream(CONFIG_FILEPATH), null);
+            PROPERTIES.store(new FileOutputStream(CONFIG_FILEPATH), null);
         } catch (IOException e) {
             e.printStackTrace();
         }
