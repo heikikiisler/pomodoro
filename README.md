@@ -10,7 +10,8 @@ Simple timer for using the Pomodoro technique with configurable work and break t
 
 The executable JAR is found in the *out/artifacts/Pomodoro_jar* directory.
 
-To set your custom times, just double click on the timer and enter the times in minutes in WORK:BREAK format (25:5 for standard Pomodoro).
+To set your custom times, double click on the timer and enter the times in minutes in WORK:BREAK format (25:5 for standard Pomodoro).
+To change the current running timer time without changing defaults, double click on the timer and enter the time in minutes.
 
 ### Features
 
@@ -22,7 +23,6 @@ To set your custom times, just double click on the timer and enter the times in 
 
 ### Ideas for new features and changes
 
-* Option to change running time without changing defaults (Right click on the time)
 * Adding options to a right-click menu to reduce confusion
 * Make it available for pinning to taskbar (Windows 10)
 * Let timer run past 00:00

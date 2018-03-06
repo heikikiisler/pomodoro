@@ -43,7 +43,7 @@ public class Timer {
         refresh();
     }
 
-    private void setTimeInMinutes(int minutes) {
+    public void setTimeInMinutes(int minutes) {
         timeInSeconds = 60 * minutes;
         refresh();
     }

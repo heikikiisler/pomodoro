@@ -5,11 +5,13 @@ import data.Config;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.geometry.Bounds;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -37,11 +39,11 @@ public class Controller {
     private Timer timer = new Timer(this);
     private Timeline timeline = new Timeline(
             new KeyFrame(
-                Duration.ZERO,
-                ActionEvent -> timer.countDownOneSecond()
+                    Duration.ZERO,
+                    ActionEvent -> timer.countDownOneSecond()
             ),
             new KeyFrame(
-                Duration.seconds(1)
+                    Duration.seconds(1)
             )
     );
 
@@ -103,11 +105,10 @@ public class Controller {
 
     public void displayTimeClicked() {
         displayTime.setOnMouseClicked(event -> {
-            if (event.getButton().equals(MouseButton.PRIMARY)) {
-                if (event.getClickCount() == 2) {
-                    pauseTimer();
-                    textField.setVisible(true);
-                }
+            if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
+                pauseTimer();
+                textField.setVisible(true);
+                textField.requestFocus();
             }
         });
     }
@@ -152,6 +153,11 @@ public class Controller {
             setXY(event.getScreenX() - xOffset, event.getScreenY() - yOffset);
             saveCoordinates();
         });
+        disableContextMenu();
+    }
+
+    private void disableContextMenu() {
+        textField.addEventFilter(ContextMenuEvent.CONTEXT_MENU_REQUESTED, Event::consume);
     }
 
     private void setXY(double x, double y) {
@@ -163,13 +169,20 @@ public class Controller {
         TextField source = (TextField) event.getSource();
         String input = source.getText();
         source.setVisible(false);
+        // Change default times.
         if (input.matches("[0-9]+.[0-9]+")) {
             String[] splitInput = input.split("\\D+");
             Config.setProperty(Config.WORK_TIME, splitInput[0]);
             Config.setProperty(Config.BREAK_TIME, splitInput[1]);
             timer.refresh();
             timer.setInitialTimesFromFile();
+        // Temporary time change.
+        } else if (input.matches("[0-9]+")) {
+            timer.setTimeInMinutes(Integer.valueOf(input));
+            timer.refresh();
+            return;
         }
         resetWorkMode();
     }
+
 }
