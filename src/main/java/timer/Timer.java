@@ -1,17 +1,17 @@
 package timer;
 
-import data.Config;
-import sample.Controller;
+import app.TimerController;
+import util.Config;
 
 public class Timer {
 
-    private static int initialWorkTimeInMinutes;
-    private static int initialBreakTimeInMinutes;
-    private Controller controller;
+    private TimerController controller;
+    private int initialWorkTimeInMinutes;
+    private int initialBreakTimeInMinutes;
     private int timeInSeconds;
     private String timeText;
 
-    public Timer(Controller controller) {
+    public Timer(TimerController controller) {
         this.controller = controller;
         setInitialTimesFromFile();
     }
@@ -24,7 +24,7 @@ public class Timer {
 
     public void countDownOneSecond() {
         if (timeInSeconds > 0) {
-            timeInSeconds -= 1;
+            timeInSeconds--;
             refresh();
         }
         else {
@@ -38,7 +38,6 @@ public class Timer {
     }
 
     public void resetWorkMode() {
-        controller.pauseTimer();
         setTimeInMinutes(initialWorkTimeInMinutes);
         refresh();
     }
@@ -49,7 +48,6 @@ public class Timer {
     }
 
     public void resetBreakMode() {
-        controller.pauseTimer();
         setTimeInMinutes(initialBreakTimeInMinutes);
         refresh();
     }
@@ -62,4 +60,5 @@ public class Timer {
     public int getTimeInSeconds() {
         return timeInSeconds;
     }
+
 }

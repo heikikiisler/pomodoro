@@ -1,7 +1,7 @@
-package sample;
+package app;
 
-import data.Config;
-import data.Resources;
+import util.Config;
+import util.Resources;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -20,7 +20,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(Resources.getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(Resources.getResource("app.fxml"));
 
         primaryStage.setTitle(Config.getPropertyString(Config.TITLE));
         primaryStage.setScene(

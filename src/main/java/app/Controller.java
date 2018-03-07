@@ -1,7 +1,7 @@
-package sample;
+package app;
 
-import data.Colors;
-import data.Config;
+import util.Colors;
+import util.Config;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import timer.Timer;
 
-public class Controller {
+public class Controller implements TimerController {
 
     @FXML
     private BorderPane borderPane;
@@ -36,6 +36,7 @@ public class Controller {
 
     private boolean breakMode = false;
     private boolean isRunning = false;
+
     private Timer timer = new Timer(this);
     private Timeline timeline = new Timeline(
             new KeyFrame(
@@ -78,6 +79,7 @@ public class Controller {
 
     private void resetBreakMode() {
         timer.resetBreakMode();
+        pauseTimer();
         breakButton.setText("Work ");
         displayTime.setStyle(Colors.DISPLAY_TIME_BREAK);
         breakMode = true;
@@ -85,6 +87,7 @@ public class Controller {
 
     private void resetWorkMode() {
         timer.resetWorkMode();
+        pauseTimer();
         breakButton.setText("Break");
         displayTime.setStyle(Colors.DISPLAY_TIME_WORK);
         breakMode = false;
