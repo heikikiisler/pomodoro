@@ -31,3 +31,11 @@ To change the current running timer time without changing defaults, double click
 
 * Windows 10: interacting with the taskbar will hide the timer if they're on top of each other.
 * Empirical evidence shows timer generally using 80-150Mb of RAM which could probably be lower.
+
+### Contributing
+
+Suggestions and contributions are very welcome through issues or pull requests.
+
+### License
+
+pomodoro is licensed under the MIT license. Check LICENSE.txt for more information.
