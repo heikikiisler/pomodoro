@@ -1,18 +1,22 @@
 package util;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
+import java.io.*;
 import java.util.Properties;
 
 public class Config {
 
+    private static final String DEFAULT_CONFIG = String.join("\n",
+            "height=60",
+            "breakTime=5",
+            "workTime=25",
+            "width=200",
+            "title=Pomodoro",
+            "yDefault=300.0",
+            "xDefault=300.0"
+    );
+
+    private static final String CONFIG_FILEPATH = "pomodoro.properties";
     private static final Properties PROPERTIES = loadAndSetProperties();
-    private static final String CONFIG_FILEPATH = "config.properties";
-    private static final String CONFIG_SAMPLE_FILEPATH = "config.properties.sample";
 
     public static final String WORK_TIME = "workTime";
     public static final String BREAK_TIME = "breakTime";
@@ -24,14 +28,13 @@ public class Config {
 
     private static Properties loadAndSetProperties() {
         Properties properties = new Properties();
+        File configFile = new File(CONFIG_FILEPATH);
         try {
-            if (!new File(CONFIG_FILEPATH).isFile()) {
-                System.out.println("here");
-                Files.copy(
-                        new File(CONFIG_SAMPLE_FILEPATH).toPath(),
-                        new File(CONFIG_FILEPATH).toPath(),
-                        StandardCopyOption.REPLACE_EXISTING
-                );
+            if (!configFile.exists()) {
+                configFile.createNewFile();
+                FileWriter writer = new FileWriter(configFile);
+                writer.write(DEFAULT_CONFIG);
+                writer.close();
             }
             properties.load(new FileInputStream(CONFIG_FILEPATH));
         } catch (IOException e) {
