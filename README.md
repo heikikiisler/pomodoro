@@ -8,7 +8,7 @@ Simple timer for using the Pomodoro technique with configurable work and break t
 
 ### How to use
 
-The executable JAR is found in the *out/artifacts/Pomodoro_jar* directory.
+Open the latest JAR from [releases](https://github.com/heikikiisler/pomodoro/releases). Java 8 or higher required.
 
 To set your custom times, double click on the timer and enter the times in minutes in WORK:BREAK format (25:5 for standard Pomodoro).
 To change the current running timer time without changing defaults, double click on the timer and enter the time in minutes.
