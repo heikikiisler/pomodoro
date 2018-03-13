@@ -105,13 +105,13 @@ public class Controller implements TimerController {
         isRunning = true;
     }
 
-
     public void displayTimeClicked() {
         displayTime.setOnMouseClicked(event -> {
             if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
                 pauseTimer();
                 textField.setVisible(true);
                 textField.requestFocus();
+                textField.clear();
             }
         });
     }

@@ -24,13 +24,7 @@ To change the current running timer time without changing defaults, double click
 ### Ideas for new features and changes
 
 * Adding options to a right-click menu to reduce confusion
-* Make it available for pinning to taskbar (Windows 10)
 * Let timer run past 00:00
-
-### Known bugs
-
-* Windows 10: interacting with the taskbar will hide the timer if they're on top of each other.
-* Empirical evidence shows timer generally using 80-150Mb of RAM which could probably be lower.
 
 ### Contributing
 
