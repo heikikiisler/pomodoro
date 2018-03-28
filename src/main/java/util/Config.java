@@ -6,17 +6,17 @@ import java.util.Properties;
 public class Config {
 
     private static final String DEFAULT_CONFIG = String.join("\n",
-            "height=60",
-            "breakTime=5",
             "workTime=25",
+            "breakTime=5",
             "width=200",
+            "height=60",
             "title=Pomodoro",
             "yDefault=300.0",
             "xDefault=300.0"
     );
 
     private static final String CONFIG_FILEPATH = "pomodoro.properties";
-    private static final Properties PROPERTIES = loadAndSetProperties();
+    private static final Properties PROPERTIES = getAndSetProperties();
 
     public static final String WORK_TIME = "workTime";
     public static final String BREAK_TIME = "breakTime";
@@ -26,7 +26,7 @@ public class Config {
     public static final String HEIGHT = "height";
     public static final String TITLE = "title";
 
-    private static Properties loadAndSetProperties() {
+    private static Properties getAndSetProperties() {
         Properties properties = new Properties();
         File configFile = new File(CONFIG_FILEPATH);
         try {

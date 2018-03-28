@@ -20,7 +20,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(Resources.getResource("app.fxml"));
+        Parent root = FXMLLoader.load(Resources.APP_FXML);
 
         primaryStage.setTitle(Config.getPropertyString(Config.TITLE));
         primaryStage.setScene(
@@ -32,7 +32,7 @@ public class Main extends Application {
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.show();
 
-        primaryStage.getIcons().add(new Image(String.valueOf(Resources.getResource("icon.png"))));
+        primaryStage.getIcons().add(new Image(String.valueOf(Resources.ICON)));
 
     }
 
